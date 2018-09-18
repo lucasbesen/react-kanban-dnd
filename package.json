@@ -1,0 +1,74 @@
+{
+  "name": "react-kanban",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "author": {
+    "name": "Lucas Besen",
+    "email": "lucassilvabesen@gmail.com",
+    "url": "https://github.com/lucasbesen"
+  },
+  "homepage": "https://github.com/lucasbesen/react-kanban",
+  "bugs": {
+    "url": "https://github.com/lucasbesen/react-kanban/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasbesen/react-kanban.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-async-to-generator": "^7.1.0",
+    "@babel/plugin-transform-react-jsx-source": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@commitlint/cli": "^7.1.2",
+    "@commitlint/config-conventional": "^7.1.2",
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.2",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "react": "^16.5.1",
+    "react-beautiful-dnd": "^9.0.2",
+    "react-dom": "^16.5.1",
+    "styled-components": "^3.4.9"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write --single-quote true --trailing-comma all --print-width 100",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn packages:lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "scripts": {
+    "lint:staged": "lint-staged",
+    "packages:lint": "tslint"
+  }
+}
