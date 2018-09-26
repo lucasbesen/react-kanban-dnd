@@ -2,7 +2,7 @@
   "name": "react-kanban",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": {
     "name": "Lucas Besen",
     "email": "lucassilvabesen@gmail.com",
@@ -33,23 +33,24 @@
     "@commitlint/config-conventional": "^7.1.2",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.2",
-    "babel-plugin-styled-components": "^1.7.1",
     "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "husky": "^1.0.0-rc.14",
+    "idx": "^2.4.0",
     "lint-staged": "^7.2.2",
     "prettier": "^1.14.2"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "@material-ui/core": "^3.1.1",
+    "@material-ui/icons": "^3.0.1",
     "loadable-components": "^2.2.3",
     "react": "^16.5.1",
     "react-beautiful-dnd": "^9.0.2",
-    "react-dom": "^16.5.1",
-    "styled-components": "^3.4.9"
+    "react-dom": "^16.5.1"
   },
   "commitlint": {
     "extends": [
@@ -64,7 +65,8 @@
     ]
   },
   "scripts": {
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "build": "babel src -d lib"
   },
   "husky": {
     "hooks": {
