@@ -1,86 +1,81 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
+import idx from 'idx';
 
-// import List from './List';
-
-const Title = styled.h4`
-  padding: 10px;
-  transition: background-color ease 0.2s;
-  flex-grow: 1;
-  user-select: none;
-  position: relative;
-  &:focus {
-    outline: 2px solid purple;
-    outline-offset: 2px;
-  }
-  font-size: 14px;
-  font-weight: 600;
-  font-family: 'Open Sans', sans-serif;
-  color: #515c6a;
-`;
-const Container = styled.div`
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  height: 300px;
-  margin-bottom: 10px;
-`;
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2px;
-  border-left: 1px solid rgba(96, 115, 137, 0.12);
-  border-right: 1px solid rgba(96, 115, 137, 0.12);
-  border-top: 1px solid rgba(96, 115, 137, 0.12);
-  background-color: ${({ isDragging }) =>
-    isDragging ? 'rgba(96, 115, 137, 0.04)' : 'rgba(96, 115, 137, 0.04)'};
-  transition: background-color 0.1s ease;
-  &:hover {
-    background-color: rgba(96, 115, 137, 0.04);
-  }
-  height: 50px;
-`;
-
-// const Counter = styled.p`
-//   padding: 0px 10px;
-//   margin-right: 10px;
-//   font-size: 14px;
-//   font-weight: 600;
-//   font-family: 'Open Sans', sans-serif;
-//   color: #515c6a;
-//   background-color: rgba(96, 115, 137, 0.16);
-//   border-radius: 9px;
-// `;
+import List from './List';
 
 export default class Column extends React.Component {
   render() {
-    const { index, positionApplicationStatus } = this.props;
-    // const column = kanban.columns.reduce(
-    //   (acc, column) =>
-    //     column.positionApplicationStatus.id === positionApplicationStatus.id ? column : acc,
-    //   null,
-    // );
+    const { index, positionApplicationStatus, kanban } = this.props;
+    const column = kanban.columns.reduce(
+      (acc, column) =>
+        column.positionApplicationStatus.id === positionApplicationStatus.id ? column : acc,
+      null,
+    );
     return (
       <Draggable draggableId={positionApplicationStatus.id} index={index} isDragDisabled={true}>
         {(provided, snapshot) => (
-          <Container innerRef={provided.innerRef} {...provided.draggableProps}>
-            <Header isDragging={snapshot.isDragging}>
-              <Title isDragging={snapshot.isDragging} {...provided.dragHandleProps}>
-                {positionApplicationStatus.status}
-              </Title>
-              {/*<Counter>{idx(column, _ => _.rowsCount) || 0}</Counter>*/}
-            </Header>
-            {/*<List*/}
-            {/*key={index}*/}
-            {/*listId={positionApplicationStatus.id}*/}
-            {/*listType="QUOTE"*/}
-            {/*positionApplicationStatus={positionApplicationStatus}*/}
-            {/*column={column}*/}
-            {/*/>*/}
-          </Container>
+          <div
+            style={{
+              margin: 10,
+              display: 'flex',
+              flexDirection: 'column',
+              height: 300,
+              marginBottom: 10,
+            }}
+            ref={provided.innerRef}
+          >
+            <div
+              style={{
+                height: 50,
+                transition: 'background-color 0.1s ease',
+                backgroundColor: 'rgba(96, 115, 137, 0.04)',
+                borderRight: '1px solid rgba(96, 115, 137, 0.12)',
+                borderTop: '1px solid rgba(96, 115, 137, 0.12)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 2,
+                borderLeft: '1px solid rgba(96, 115, 137, 0.12)',
+              }}
+            >
+              <h4
+                style={{
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: '#515c6a',
+                  padding: 10,
+                  transition: 'background-color ease 0.2s',
+                  flexGrow: 1,
+                  userSelect: 'none',
+                  position: 'relative',
+                }}
+              >
+                Status um
+              </h4>
+              <p
+                style={{
+                  borderRadius: 9,
+                  backgroundColor: 'rgba(96, 115, 137, 0.16)',
+                  padding: '0px 10px',
+                  marginRight: 10,
+                  fontSize: 14,
+                  fontWeight: 500,
+                  fontFamily: 'Open Sans',
+                  color: '#515c6a',
+                }}
+              >
+                {idx(column, _ => _.rowsCount) || 0}
+              </p>
+            </div>
+            {/* <List
+              key={index}
+              listId={positionApplicationStatus.id}
+              listType="QUOTE"
+              positionApplicationStatus={positionApplicationStatus}
+              column={column}
+            /> */}
+          </div>
         )}
       </Draggable>
     );
