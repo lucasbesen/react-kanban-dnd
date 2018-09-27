@@ -35,16 +35,16 @@ export default class QuoteList extends React.Component {
               display: 'flex',
               backgroundColor: 'rgba(96, 115, 137, 0.04)',
               userSelect: 'none',
-              overflowY: 'auto',
               paddingBottom: 0,
               transition: 'background-color 0.1s ease, opacity 0.1s ease',
               flexDirection: 'column',
               opacity: isDropDisabled ? 0.5 : 'inherit',
               padding: 10,
               borderRadius: 2,
+              borderRight: '1px solid rgba(96, 115, 137, 0.12)',
+              borderTop: '1px solid rgba(96, 115, 137, 0.12)',
+              borderLeft: '1px solid rgba(96, 115, 137, 0.12)',
             }}
-            isDraggingOver={dropSnapshot.isDraggingOver}
-            isDropDisabled={isDropDisabled}
             {...dropProvided.droppableProps}
           >
             {internalScroll ? (

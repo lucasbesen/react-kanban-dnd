@@ -1,84 +1,8 @@
 // @flow
 import * as React from 'react';
-// import styled from 'styled-components';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-
-// const Container = styled.a`
-//   border-radius: 2px;
-//   border: 1px solid rgba(96, 115, 137, 0.12);
-//   background-color: ${({ isDragging }) => (isDragging ? '#ffffff' : '#ffffff')};
-//   box-shadow: ${({ isDragging }) => (isDragging ? `2px 2px 1px rgba(0,0,0,0.2)` : 'none')};
-//   padding: 9px 0px 9px 9px;
-//   min-height: 40px;
-//   margin-bottom: 8px;
-//   user-select: none;
-//   transition: background-color 0.5s ease;
-//   /* anchor overrides */
-//   color: black;
-//   &:hover {
-//     color: black;
-//     text-decoration: none;
-//   }
-//   &:focus {
-//     outline: 2px solid purple;
-//     box-shadow: none;
-//   }
-//   /* flexbox */
-//   display: flex;
-//   align-items: center;
-// `;
-
-// const Content = styled.div`
-//   /* flex child */
-//   flex-grow: 1;
-//   /*
-//     Needed to wrap text in ie11
-//     https://stackoverflow.com/questions/35111090/why-ie11-doesnt-wrap-the-text-in-flexbox
-//   */
-//   flex-basis: 100%;
-//   /* flex parent */
-//   display: flex;
-//   flex-direction: column;
-// `;
-
-// const CandidateName = styled.p`
-//   font-size: 14px;
-//   font-weight: 600;
-//   color: #607389;
-//   font-family: 'Open Sans', sans-serif;
-//   margin-top: 0px !important;
-// `;
-
-// const InfoWrapper = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-// `;
-
-// const Wrapper = styled.div`
-//   display: flex;
-//   flex-direction: row;
-// `;
-
-// const Title = styled.span`
-//   font-size: 12px;
-//   font-weight: 600;
-//   color: #607389;
-//   font-family: 'Open Sans', sans-serif;
-// `;
-
-// const Value = styled.span`
-//   font-size: 12px;
-//   color: #607389;
-//   font-family: 'Open Sans', sans-serif;
-//   margin-left: 5px;
-//   margin-right: 9px;
-// `;
-
-// const Icon = styled(_Icon)`
-//   cursor: pointer;
-// `;
+import Icon from '@material-ui/core/Icon';
 
 export default class QuoteItem extends React.PureComponent {
   state = {
@@ -140,48 +64,112 @@ export default class QuoteItem extends React.PureComponent {
       candidate.jobExamCandidateApplicationCount
     }`;
 
-    // return (
-    //   <Container
-    //     isDragging={isDragging}
-    //     innerRef={provided.innerRef}
-    //     {...provided.draggableProps}
-    //     {...provided.dragHandleProps}
-    //   >
-    //     <Content>
-    //       <InfoWrapper>
-    //         <CandidateName>{candidate.name}</CandidateName>
-    //         <Icon onClick={this.handleOpenMenu}>more_vert</Icon>
-    //         <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={this.handleCloseMenu}>
-    //           <MenuItem key={`${candidate.id}-view`} onClick={this.handleViewCandidate}>
-    //             Visualizar candidato
-    //           </MenuItem>
-    //           <MenuItem key={`${candidate.id}-view`} onClick={this.handleViewCandidateAllInfo}>
-    //             Visualizar capa de contratação
-    //           </MenuItem>
-    //           <MenuItem
-    //             key={`${candidate.id}-remove`}
-    //             onClick={this.handleRemoveCandidateApplication}
-    //           >
-    //             Remover candidato
-    //           </MenuItem>
-    //         </Menu>
-    //       </InfoWrapper>
-    //       <InfoWrapper>
-    //         <Wrapper>
-    //           <Title>Entrevistas:</Title>
-    //           <Value>{candidate.interviewsCount}</Value>
-    //         </Wrapper>
-    //         <Wrapper>
-    //           <Title>Documentos:</Title>
-    //           <Value>{candidateDocumentStatus}</Value>
-    //         </Wrapper>
-    //       </InfoWrapper>
-    //       <Wrapper>
-    //         <Title>Prova:</Title>
-    //         <Value>{examStatus}</Value>
-    //       </Wrapper>
-    //     </Content>
-    //   </Container>
-    // );
+    return (
+      <a
+        {...provided.draggableProps}
+        {...provided.dragHandleProps}
+        ref={provided.innerRef}
+        style={{
+          boxShadow: isDragging ? `2px 2px 1px rgba(0,0,0,0.2)` : 'none',
+          minHeight: 40,
+          marginBottom: 8,
+          userSelect: 'none',
+          transition: 'background-color 0.5s ease',
+          display: 'flex',
+          alignItems: 'center',
+          borderRadius: 2,
+          border: '1px solid rgba(96, 115, 137, 0.12)',
+          backgroundColor: '#ffffff',
+          padding: '9px 0px 9px 9px',
+        }}
+      >
+        <div style={{ flexGrow: 1, flexBasis: '100%', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <p
+              style={{
+                fontSize: 14,
+                fontWeight: 600,
+                color: '#607389',
+                fontFamily: 'Open Sans',
+                marginTop: 0,
+              }}
+            >
+              {candidate.name}
+            </p>
+            <Icon onClick={() => console.log('xd')}>more_vert</Icon>
+            <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={this.handleCloseMenu}>
+              <MenuItem key={`${candidate.id}-view`} onClick={this.handleViewCandidate}>
+                Visualizar candidato
+              </MenuItem>
+              <MenuItem key={`${candidate.id}-view`} onClick={this.handleViewCandidateAllInfo}>
+                Visualizar capa de contratação
+              </MenuItem>
+              <MenuItem
+                key={`${candidate.id}-remove`}
+                onClick={this.handleRemoveCandidateApplication}
+              >
+                Remover candidato
+              </MenuItem>
+            </Menu>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <span
+                style={{ fontSize: 12, fontWeight: 600, color: '#607389', fontFamily: 'Open Sans' }}
+              >
+                Entrevistas:
+              </span>
+              <span
+                style={{
+                  fontSize: 12,
+                  color: '#607389',
+                  fontFamily: 'Open Sans',
+                  marginLeft: 5,
+                  marginRight: 9,
+                }}
+              >
+                {candidate.interviewsCount}
+              </span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <span
+                style={{ fontSize: 12, fontWeight: 600, color: '#607389', fontFamily: 'Open Sans' }}
+              >
+                Documentos:
+              </span>
+              <span
+                style={{
+                  fontSize: 12,
+                  color: '#607389',
+                  fontFamily: 'Open Sans',
+                  marginLeft: 5,
+                  marginRight: 9,
+                }}
+              >
+                {candidateDocumentStatus}
+              </span>
+            </div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <span
+              style={{ fontSize: 12, fontWeight: 600, color: '#607389', fontFamily: 'Open Sans' }}
+            >
+              Prova:
+            </span>
+            <span
+              style={{
+                fontSize: 12,
+                color: '#607389',
+                fontFamily: 'Open Sans',
+                marginLeft: 5,
+                marginRight: 9,
+              }}
+            >
+              {examStatus}
+            </span>
+          </div>
+        </div>
+      </a>
+    );
   }
 }

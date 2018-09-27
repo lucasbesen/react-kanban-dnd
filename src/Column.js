@@ -22,8 +22,10 @@ export default class Column extends React.Component {
               flexDirection: 'column',
               height: 300,
               marginBottom: 10,
+              width: 270,
             }}
             ref={provided.innerRef}
+            {...provided.draggableProps}
           >
             <div
               style={{
@@ -40,6 +42,7 @@ export default class Column extends React.Component {
               }}
             >
               <h4
+                {...provided.dragHandleProps}
                 style={{
                   fontSize: 14,
                   fontWeight: 600,
@@ -68,13 +71,13 @@ export default class Column extends React.Component {
                 {idx(column, _ => _.rowsCount) || 0}
               </p>
             </div>
-            {/* <List
+            <List
               key={index}
               listId={positionApplicationStatus.id}
               listType="QUOTE"
               positionApplicationStatus={positionApplicationStatus}
               column={column}
-            /> */}
+            />
           </div>
         )}
       </Draggable>

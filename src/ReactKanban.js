@@ -5,12 +5,22 @@ import Column from './Column';
 
 export default class ReactKanban extends React.Component {
   render() {
-    const { positionApplicationStatuses, jobRequest } = this.props;
+    const { positionApplicationStatuses, jobRequest, onDragStart, onDragEnd } = this.props;
     return (
-      <DragDropContext>
-        <Droppable droppableId="kanban" type="COLUMN" direction="horizontal" isDropDisabled={true}>
+      <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
+        <Droppable
+          droppableId="kanban"
+          type="COLUMN"
+          direction="horizontal"
+          ignoreContainerClipping={false}
+          isDropDisabled={true}
+        >
           {provided => (
-            <div style={{ minWidth: '100vw', display: 'inline-flex' }} ref={provided.innerRef}>
+            <div
+              style={{ minWidth: '100vw', display: 'inline-flex' }}
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
               {positionApplicationStatuses.map((item, index) => (
                 <Column
                   key={index}

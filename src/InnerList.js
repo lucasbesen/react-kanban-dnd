@@ -23,7 +23,7 @@ export default class InnerList extends React.Component {
     return (
       <div>
         {title}
-        <div style={{ minHeight: 250, marginBottom: 10 }} innerRef={dropProvided.innerRef}>
+        <div style={{ minHeight: 250, marginBottom: 10 }} ref={dropProvided.innerRef}>
           <InnerQuoteList column={column} />
           {dropProvided.placeholder}
         </div>
