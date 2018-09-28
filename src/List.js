@@ -1,8 +1,31 @@
 // @flow
 import * as React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
+import styled from 'styled-components';
 
 import InnerList from './InnerList';
+
+const Wrapper = styled.div`
+  background-color: ${({ isDraggingOver }) =>
+    isDraggingOver ? 'rgba(96, 115, 137, 0.04)' : 'rgba(96, 115, 137, 0.04)'};
+  display: flex;
+  flex-direction: column;
+  opacity: ${({ isDropDisabled }) => (isDropDisabled ? 0.5 : 'inherit')};
+  padding: 10px;
+  border-radius: 2px;
+  border-left: 1px solid rgba(96, 115, 137, 0.12);
+  border-right: 1px solid rgba(96, 115, 137, 0.12);
+  border-bottom: 1px solid rgba(96, 115, 137, 0.12);
+  padding-bottom: 0;
+  transition: background-color 0.1s ease, opacity 0.1s ease;
+  user-select: none;
+`;
+
+const ScrollContainer = styled.div`
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 300px;
+`;
 
 export default class QuoteList extends React.Component {
   static defaultProps = {
@@ -30,31 +53,20 @@ export default class QuoteList extends React.Component {
         isDropDisabled={isDropDisabled}
       >
         {(dropProvided, dropSnapshot) => (
-          <div
-            style={{
-              display: 'flex',
-              backgroundColor: 'rgba(96, 115, 137, 0.04)',
-              userSelect: 'none',
-              paddingBottom: 0,
-              transition: 'background-color 0.1s ease, opacity 0.1s ease',
-              flexDirection: 'column',
-              opacity: isDropDisabled ? 0.5 : 'inherit',
-              padding: 10,
-              borderRadius: 2,
-              borderRight: '1px solid rgba(96, 115, 137, 0.12)',
-              borderTop: '1px solid rgba(96, 115, 137, 0.12)',
-              borderLeft: '1px solid rgba(96, 115, 137, 0.12)',
-            }}
+          <Wrapper
+            style={style}
+            isDraggingOver={dropSnapshot.isDraggingOver}
+            isDropDisabled={isDropDisabled}
             {...dropProvided.droppableProps}
           >
             {internalScroll ? (
-              <div style={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: 300 }}>
+              <ScrollContainer>
                 <InnerList column={column} title={title} dropProvided={dropProvided} />
-              </div>
+              </ScrollContainer>
             ) : (
               <InnerList column={column} title={title} dropProvided={dropProvided} />
             )}
-          </div>
+          </Wrapper>
         )}
       </Droppable>
     );
