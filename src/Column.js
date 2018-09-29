@@ -59,7 +59,7 @@ const Counter = styled.p`
 
 export default class Column extends React.Component {
   render() {
-    const { index, positionApplicationStatus, kanban } = this.props;
+    const { index, positionApplicationStatus, kanban, renderCard } = this.props;
     const column = kanban.columns.reduce(
       (acc, column) =>
         column.positionApplicationStatus.id === positionApplicationStatus.id ? column : acc,
@@ -81,6 +81,7 @@ export default class Column extends React.Component {
               listType="QUOTE"
               positionApplicationStatus={positionApplicationStatus}
               column={column}
+              renderCard={renderCard}
             />
           </Container>
         )}

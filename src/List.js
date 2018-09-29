@@ -1,9 +1,8 @@
-// @flow
 import * as React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 
-import InnerList from './InnerList';
+import InnerQuoteList from './InnerQuoteList';
 
 const Wrapper = styled.div`
   background-color: ${({ isDraggingOver }) =>
@@ -21,10 +20,14 @@ const Wrapper = styled.div`
   user-select: none;
 `;
 
-const ScrollContainer = styled.div`
-  overflow-x: hidden;
-  overflow-y: auto;
-  max-height: 300px;
+const DropZone = styled.div`
+  /* stop the list collapsing when empty */
+  min-height: 250px;
+  /*
+    not relying on the items for a margin-bottom
+    as it will collapse when the list is empty
+  */
+  margin-bottom: 10px;
 `;
 
 export default class QuoteList extends React.Component {
@@ -34,16 +37,13 @@ export default class QuoteList extends React.Component {
   render() {
     const {
       ignoreContainerClipping,
-      internalScroll,
       isDropDisabled,
       listId,
       listType,
       style,
-      title,
       column,
+      renderCard,
     } = this.props;
-
-    // const data = formatPositionApplications(positionApplicationStatus.positionApplications);
 
     return (
       <Droppable
@@ -59,13 +59,12 @@ export default class QuoteList extends React.Component {
             isDropDisabled={isDropDisabled}
             {...dropProvided.droppableProps}
           >
-            {internalScroll ? (
-              <ScrollContainer>
-                <InnerList column={column} title={title} dropProvided={dropProvided} />
-              </ScrollContainer>
-            ) : (
-              <InnerList column={column} title={title} dropProvided={dropProvided} />
-            )}
+            <div>
+              <DropZone innerRef={dropProvided.innerRef}>
+                <InnerQuoteList column={column} renderCard={renderCard} />
+                {dropProvided.placeholder}
+              </DropZone>
+            </div>
           </Wrapper>
         )}
       </Droppable>

@@ -17,6 +17,7 @@ export default class ReactKanban extends React.Component {
       onDragStart,
       onDragEnd,
       containerHeight,
+      renderCard,
     } = this.props;
     return (
       <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
@@ -35,6 +36,7 @@ export default class ReactKanban extends React.Component {
                   positionApplicationStatus={item}
                   index={index}
                   kanban={jobRequest.kanban}
+                  renderCard={renderCard}
                 />
               ))}
             </Container>

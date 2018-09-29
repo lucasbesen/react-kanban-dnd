@@ -1,8 +1,7 @@
-// @flow
 import * as React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
-import CandidateCard from './CandidateCard';
+import Card from './Card';
 
 export default class InnerQuoteList extends React.Component {
   render() {
@@ -10,12 +9,13 @@ export default class InnerQuoteList extends React.Component {
       ? this.props.column.rows.map((quote, index) => (
           <Draggable key={quote.id} draggableId={quote.id} index={index}>
             {(dragProvided, dragSnapshot) => (
-              <CandidateCard
+              <Card
                 key={quote.id}
                 quote={quote}
                 isDragging={dragSnapshot.isDragging}
                 provided={dragProvided}
                 row={quote}
+                renderCard={this.props.renderCard}
               />
             )}
           </Draggable>
