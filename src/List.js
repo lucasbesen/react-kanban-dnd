@@ -30,44 +30,37 @@ const DropZone = styled.div`
   margin-bottom: 10px;
 `;
 
-export default class QuoteList extends React.Component {
-  static defaultProps = {
-    listId: 'LIST',
-  };
-  render() {
-    const {
-      ignoreContainerClipping,
-      isDropDisabled,
-      listId,
-      listType,
-      style,
-      column,
-      renderCard,
-    } = this.props;
-
-    return (
-      <Droppable
-        droppableId={listId}
-        type={listType}
-        ignoreContainerClipping={ignoreContainerClipping}
+const List = ({
+  ignoreContainerClipping,
+  isDropDisabled,
+  listId,
+  listType,
+  style,
+  column,
+  renderCard,
+}) => (
+  <Droppable
+    droppableId={listId || 'LIST'}
+    type={listType}
+    ignoreContainerClipping={ignoreContainerClipping}
+    isDropDisabled={isDropDisabled}
+  >
+    {(dropProvided, dropSnapshot) => (
+      <Wrapper
+        style={style}
+        isDraggingOver={dropSnapshot.isDraggingOver}
         isDropDisabled={isDropDisabled}
+        {...dropProvided.droppableProps}
       >
-        {(dropProvided, dropSnapshot) => (
-          <Wrapper
-            style={style}
-            isDraggingOver={dropSnapshot.isDraggingOver}
-            isDropDisabled={isDropDisabled}
-            {...dropProvided.droppableProps}
-          >
-            <div>
-              <DropZone innerRef={dropProvided.innerRef}>
-                <InnerQuoteList column={column} renderCard={renderCard} />
-                {dropProvided.placeholder}
-              </DropZone>
-            </div>
-          </Wrapper>
-        )}
-      </Droppable>
-    );
-  }
-}
+        <div>
+          <DropZone innerRef={dropProvided.innerRef}>
+            <InnerQuoteList column={column} renderCard={renderCard} />
+            {dropProvided.placeholder}
+          </DropZone>
+        </div>
+      </Wrapper>
+    )}
+  </Droppable>
+);
+
+export default List;

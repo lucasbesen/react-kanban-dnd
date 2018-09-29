@@ -32,19 +32,15 @@ const Content = styled.div`
   flex-direction: column;
 `;
 
-export default class Card extends React.Component {
-  render() {
-    const { isDragging, provided } = this.props;
+const Card = ({ isDragging, provided, renderCard }) => (
+  <Container
+    isDragging={isDragging}
+    innerRef={provided.innerRef}
+    {...provided.draggableProps}
+    {...provided.dragHandleProps}
+  >
+    <Content>{renderCard()}</Content>
+  </Container>
+);
 
-    return (
-      <Container
-        isDragging={isDragging}
-        innerRef={provided.innerRef}
-        {...provided.draggableProps}
-        {...provided.dragHandleProps}
-      >
-        <Content>{this.props.renderCard()}</Content>
-      </Container>
-    );
-  }
-}
+export default Card;
