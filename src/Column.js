@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import idx from 'idx';
 import styled from 'styled-components';
 
 import List from './List';
@@ -46,40 +45,23 @@ const Header = styled.div`
   height: 50px;
 `;
 
-const Counter = styled.p`
-  padding: 0px 10px;
-  margin-right: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  font-family: 'Open Sans', sans-serif;
-  color: #515c6a;
-  background-color: rgba(96, 115, 137, 0.16);
-  border-radius: 9px;
-`;
-
 export default class Column extends React.Component {
   render() {
-    const { index, positionApplicationStatus, kanban, renderCard } = this.props;
-    const column = kanban.columns.reduce(
-      (acc, column) =>
-        column.positionApplicationStatus.id === positionApplicationStatus.id ? column : acc,
-      null,
-    );
+    const { index, column, renderCard } = this.props;
+
     return (
-      <Draggable draggableId={positionApplicationStatus.id} index={index} isDragDisabled={true}>
+      <Draggable draggableId={column.id} index={index} isDragDisabled={true}>
         {(provided, snapshot) => (
           <Container innerRef={provided.innerRef} {...provided.draggableProps}>
             <Header isDragging={snapshot.isDragging}>
               <Title isDragging={snapshot.isDragging} {...provided.dragHandleProps}>
-                {positionApplicationStatus.status}
+                {column.title}
               </Title>
-              <Counter>{idx(column, _ => _.rowsCount) || 0}</Counter>
             </Header>
             <List
               key={index}
-              listId={positionApplicationStatus.id}
+              listId={column.id}
               listType="QUOTE"
-              positionApplicationStatus={positionApplicationStatus}
               column={column}
               renderCard={renderCard}
             />

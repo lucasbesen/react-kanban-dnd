@@ -11,14 +11,7 @@ const Container = styled.div`
 
 export default class ReactKanban extends React.Component {
   render() {
-    const {
-      positionApplicationStatuses,
-      jobRequest,
-      onDragStart,
-      onDragEnd,
-      containerHeight,
-      renderCard,
-    } = this.props;
+    const { columns, onDragStart, onDragEnd, containerHeight, renderCard } = this.props;
     return (
       <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
         <Droppable
@@ -30,14 +23,8 @@ export default class ReactKanban extends React.Component {
         >
           {provided => (
             <Container innerRef={provided.innerRef} {...provided.droppableProps}>
-              {positionApplicationStatuses.map((item, index) => (
-                <Column
-                  key={index}
-                  positionApplicationStatus={item}
-                  index={index}
-                  kanban={jobRequest.kanban}
-                  renderCard={renderCard}
-                />
+              {columns.map((column, index) => (
+                <Column key={index} index={index} column={column} renderCard={renderCard} />
               ))}
             </Container>
           )}

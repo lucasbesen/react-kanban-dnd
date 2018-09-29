@@ -32,14 +32,14 @@ const Content = styled.div`
   flex-direction: column;
 `;
 
-const Card = ({ isDragging, provided, renderCard }) => (
+const Card = ({ isDragging, provided, renderCard, row }) => (
   <Container
     isDragging={isDragging}
     innerRef={provided.innerRef}
     {...provided.draggableProps}
     {...provided.dragHandleProps}
   >
-    <Content>{renderCard()}</Content>
+    <Content>{renderCard(row)}</Content>
   </Container>
 );
 
