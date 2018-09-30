@@ -47,14 +47,29 @@ const Header = styled.div`
 
 export default class Column extends React.Component {
   render() {
-    const { index, column, renderCard } = this.props;
+    const {
+      index,
+      column,
+      renderCard,
+      columnWrapperStyle,
+      columnStyle,
+      columnTitleStyle,
+    } = this.props;
 
     return (
       <Draggable draggableId={column.id} index={index} isDragDisabled={true}>
         {(provided, snapshot) => (
-          <Container innerRef={provided.innerRef} {...provided.draggableProps}>
-            <Header isDragging={snapshot.isDragging}>
-              <Title isDragging={snapshot.isDragging} {...provided.dragHandleProps}>
+          <Container
+            style={columnWrapperStyle}
+            innerRef={provided.innerRef}
+            {...provided.draggableProps}
+          >
+            <Header style={columnStyle} isDragging={snapshot.isDragging}>
+              <Title
+                style={columnTitleStyle}
+                isDragging={snapshot.isDragging}
+                {...provided.dragHandleProps}
+              >
                 {column.title}
               </Title>
             </Header>
