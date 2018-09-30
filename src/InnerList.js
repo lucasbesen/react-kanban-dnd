@@ -4,7 +4,7 @@ import idx from 'idx';
 
 import Card from './Card';
 
-export default class InnerQuoteList extends React.Component {
+export default class InnerList extends React.Component {
   render() {
     const { column, cardWrapperStyle } = this.props;
     return idx(column, _ => _.rows[0])

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 
-import InnerQuoteList from './InnerQuoteList';
+import InnerList from './InnerList';
 
 const Wrapper = styled.div`
   background-color: 'rgba(96, 115, 137, 0.04)';
@@ -24,22 +24,8 @@ const DropZone = styled.div`
   margin-bottom: 10px;
 `;
 
-const List = ({
-  ignoreContainerClipping,
-  isDropDisabled,
-  listId,
-  listType,
-  column,
-  renderCard,
-  columnStyle,
-  cardWrapperStyle,
-}) => (
-  <Droppable
-    droppableId={listId || 'LIST'}
-    type={listType}
-    ignoreContainerClipping={ignoreContainerClipping}
-    isDropDisabled={isDropDisabled}
-  >
+const List = ({ isDropDisabled, listId, column, renderCard, columnStyle, cardWrapperStyle }) => (
+  <Droppable droppableId={listId || 'LIST'} isDropDisabled={isDropDisabled}>
     {(dropProvided, dropSnapshot) => (
       <Wrapper
         style={columnStyle}
@@ -47,16 +33,10 @@ const List = ({
         isDropDisabled={isDropDisabled}
         {...dropProvided.droppableProps}
       >
-        <div>
-          <DropZone innerRef={dropProvided.innerRef}>
-            <InnerQuoteList
-              column={column}
-              renderCard={renderCard}
-              cardWrapperStyle={cardWrapperStyle}
-            />
-            {dropProvided.placeholder}
-          </DropZone>
-        </div>
+        <DropZone innerRef={dropProvided.innerRef}>
+          <InnerList column={column} renderCard={renderCard} cardWrapperStyle={cardWrapperStyle} />
+          {dropProvided.placeholder}
+        </DropZone>
       </Wrapper>
     )}
   </Droppable>

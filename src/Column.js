@@ -77,7 +77,6 @@ export default class Column extends React.Component {
                 key={index}
                 columnStyle={columnStyle}
                 listId={column.id}
-                listType="QUOTE"
                 column={column}
                 renderCard={renderCard}
                 cardWrapperStyle={cardWrapperStyle}

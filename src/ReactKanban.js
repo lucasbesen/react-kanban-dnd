@@ -24,7 +24,7 @@ export default class ReactKanban extends React.Component {
     } = this.props;
     return (
       <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
-        <Droppable droppableId="board" type="COLUMN" direction="horizontal" isDropDisabled={true}>
+        <Droppable droppableId="board" isDropDisabled={true}>
           {provided => (
             <Container innerRef={provided.innerRef} {...provided.droppableProps}>
               {columns.map((column, index) => (
