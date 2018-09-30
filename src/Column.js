@@ -36,14 +36,15 @@ const Header = styled.div`
   border-left: 1px solid rgba(96, 115, 137, 0.12);
   border-right: 1px solid rgba(96, 115, 137, 0.12);
   border-top: 1px solid rgba(96, 115, 137, 0.12);
-  background-color: ${({ isDragging }) =>
-    isDragging ? 'rgba(96, 115, 137, 0.04)' : 'rgba(96, 115, 137, 0.04)'};
+  background-color: 'rgba(96, 115, 137, 0.04)';
   transition: background-color 0.1s ease;
   &:hover {
     background-color: rgba(96, 115, 137, 0.04);
   }
   height: 50px;
 `;
+
+const Wrapper = styled.div``;
 
 export default class Column extends React.Component {
   render() {
@@ -54,33 +55,35 @@ export default class Column extends React.Component {
       columnWrapperStyle,
       columnStyle,
       columnTitleStyle,
+      columnHeaderStyle,
+      cardWrapperStyle,
     } = this.props;
 
     return (
       <Draggable draggableId={column.id} index={index} isDragDisabled={true}>
         {(provided, snapshot) => (
-          <Container
-            style={columnWrapperStyle}
-            innerRef={provided.innerRef}
-            {...provided.draggableProps}
-          >
-            <Header style={columnStyle} isDragging={snapshot.isDragging}>
-              <Title
-                style={columnTitleStyle}
-                isDragging={snapshot.isDragging}
-                {...provided.dragHandleProps}
-              >
-                {column.title}
-              </Title>
-            </Header>
-            <List
-              key={index}
-              listId={column.id}
-              listType="QUOTE"
-              column={column}
-              renderCard={renderCard}
-            />
-          </Container>
+          <Wrapper innerRef={provided.innerRef} {...provided.draggableProps}>
+            <Container style={columnWrapperStyle}>
+              <Header style={columnHeaderStyle} isDragging={snapshot.isDragging}>
+                <Title
+                  style={columnTitleStyle}
+                  isDragging={snapshot.isDragging}
+                  {...provided.dragHandleProps}
+                >
+                  {column.title}
+                </Title>
+              </Header>
+              <List
+                key={index}
+                columnStyle={columnStyle}
+                listId={column.id}
+                listType="QUOTE"
+                column={column}
+                renderCard={renderCard}
+                cardWrapperStyle={cardWrapperStyle}
+              />
+            </Container>
+          </Wrapper>
         )}
       </Draggable>
     );

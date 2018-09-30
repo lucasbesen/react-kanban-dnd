@@ -17,8 +17,10 @@ export default class ReactKanban extends React.Component {
       onDragEnd,
       renderCard,
       columnWrapperStyle,
+      columnHeaderStyle,
       columnStyle,
       columnTitleStyle,
+      cardWrapperStyle,
     } = this.props;
     return (
       <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
@@ -31,9 +33,11 @@ export default class ReactKanban extends React.Component {
                   index={index}
                   column={column}
                   renderCard={renderCard}
+                  columnHeaderStyle={columnHeaderStyle}
                   columnTitleStyle={columnTitleStyle}
                   columnStyle={columnStyle}
                   columnWrapperStyle={columnWrapperStyle}
+                  cardWrapperStyle={cardWrapperStyle}
                 />
               ))}
             </Container>

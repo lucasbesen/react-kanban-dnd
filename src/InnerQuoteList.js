@@ -6,7 +6,7 @@ import Card from './Card';
 
 export default class InnerQuoteList extends React.Component {
   render() {
-    const { column } = this.props;
+    const { column, cardWrapperStyle } = this.props;
     return idx(column, _ => _.rows[0])
       ? column.rows.map((row, index) => (
           <Draggable key={row.id} draggableId={row.id} index={index}>
@@ -17,6 +17,7 @@ export default class InnerQuoteList extends React.Component {
                 isDragging={dragSnapshot.isDragging}
                 provided={dragProvided}
                 renderCard={this.props.renderCard}
+                cardWrapperStyle={cardWrapperStyle}
               />
             )}
           </Draggable>

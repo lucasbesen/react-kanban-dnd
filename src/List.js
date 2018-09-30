@@ -5,8 +5,7 @@ import styled from 'styled-components';
 import InnerQuoteList from './InnerQuoteList';
 
 const Wrapper = styled.div`
-  background-color: ${({ isDraggingOver }) =>
-    isDraggingOver ? 'rgba(96, 115, 137, 0.04)' : 'rgba(96, 115, 137, 0.04)'};
+  background-color: 'rgba(96, 115, 137, 0.04)';
   display: flex;
   flex-direction: column;
   opacity: ${({ isDropDisabled }) => (isDropDisabled ? 0.5 : 'inherit')};
@@ -21,12 +20,7 @@ const Wrapper = styled.div`
 `;
 
 const DropZone = styled.div`
-  /* stop the list collapsing when empty */
   min-height: 250px;
-  /*
-    not relying on the items for a margin-bottom
-    as it will collapse when the list is empty
-  */
   margin-bottom: 10px;
 `;
 
@@ -35,9 +29,10 @@ const List = ({
   isDropDisabled,
   listId,
   listType,
-  style,
   column,
   renderCard,
+  columnStyle,
+  cardWrapperStyle,
 }) => (
   <Droppable
     droppableId={listId || 'LIST'}
@@ -47,14 +42,18 @@ const List = ({
   >
     {(dropProvided, dropSnapshot) => (
       <Wrapper
-        style={style}
+        style={columnStyle}
         isDraggingOver={dropSnapshot.isDraggingOver}
         isDropDisabled={isDropDisabled}
         {...dropProvided.droppableProps}
       >
         <div>
           <DropZone innerRef={dropProvided.innerRef}>
-            <InnerQuoteList column={column} renderCard={renderCard} />
+            <InnerQuoteList
+              column={column}
+              renderCard={renderCard}
+              cardWrapperStyle={cardWrapperStyle}
+            />
             {dropProvided.placeholder}
           </DropZone>
         </div>
