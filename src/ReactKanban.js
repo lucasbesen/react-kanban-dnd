@@ -28,6 +28,7 @@ export default class ReactKanban extends React.Component {
     )
       return;
 
+    // TODO: Move to an functional way
     let removedRow = null;
 
     columns.map(column => {
