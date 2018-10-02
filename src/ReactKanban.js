@@ -10,11 +10,49 @@ const Container = styled.div`
 `;
 
 export default class ReactKanban extends React.Component {
+  state = {
+    columns: this.props.columns || [],
+  };
+
+  handleDrag = result => {
+    const { columns } = this.state;
+    const { onDragEnd } = this.props;
+    const destination = result.destination;
+
+    // Dropped nowhere
+    if (!result.destination) return;
+    // Didn't move anywhere - can bail early
+    if (
+      result.source.droppableId === destination.droppableId &&
+      result.source.index === destination.index
+    )
+      return;
+
+    let removedRow = null;
+
+    columns.map(column => {
+      let rows = column.rows.filter(row => {
+        if (row.id === result.draggableId) {
+          removedRow = row;
+          return false;
+        }
+        return true;
+      });
+      column.rows = rows;
+    });
+
+    columns.map(column => {
+      if (column.id === destination.droppableId && removedRow) {
+        column.rows.push(removedRow);
+      }
+    });
+    this.setState({ columns });
+    return onDragEnd(result);
+  };
+
   render() {
     const {
-      columns,
       onDragStart,
-      onDragEnd,
       renderCard,
       columnWrapperStyle,
       columnHeaderStyle,
@@ -22,8 +60,9 @@ export default class ReactKanban extends React.Component {
       columnTitleStyle,
       cardWrapperStyle,
     } = this.props;
+    const { columns } = this.state;
     return (
-      <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
+      <DragDropContext onDragStart={onDragStart} onDragEnd={this.handleDrag}>
         <Droppable droppableId="board" isDropDisabled={true}>
           {provided => (
             <Container innerRef={provided.innerRef} {...provided.droppableProps}>
