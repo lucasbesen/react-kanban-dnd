@@ -71,7 +71,8 @@
   },
   "scripts": {
     "lint:staged": "lint-staged",
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "prepublish": "yarn build"
   },
   "husky": {
     "hooks": {
