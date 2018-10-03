@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://lh3.googleusercontent.com/ZCfEPmHJ61C-pPz8jXvB6l6O_nw57a83lHSIkChluRCshPjt8KJcXQgZOBeTmPJk9-UHKVa1p5IlqBF538tp=w2880-h1510">
+  <img src="https://lh4.googleusercontent.com/PJYIdIDdaYwmuZPnl2-ZHUu6bF4BT8OzjJadD5tW_TsMXfv0Jsh0CCeS2jVR5WDLPn9zOF5KdKuQNhNRATvN=w2880-h1510">
 </p>
 
-## :hammer: Install and Usage
+## :hammer: &nbsp; Install and Usage
 
 First, you will need to install **react-kanban** on your project
 
@@ -35,6 +35,6 @@ export default class MyKanban extends React.Component {
 
 That's it. Now **react-kanban** should appears on your project :v:
 
-## 🤝 Contributions
+## 🤝 &nbsp; Contributions
 
 Every kind of contribution is welcome and you can ping me at [Twitter](https://twitter.com/lucasbesen) aswell
