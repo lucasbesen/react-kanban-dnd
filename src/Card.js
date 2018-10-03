@@ -9,6 +9,7 @@ const Content = styled.div`
   flex-basis: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 8px;
 `;
 
 const Card = ({ isDragging, provided, renderCard, row, cardWrapperStyle }) => (
