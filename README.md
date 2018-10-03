@@ -52,7 +52,7 @@ That's it. Now, kanban should appears on your project
 | **`columnTitleStyle`**  | Optional styling for the column title                                                                                                                                                                                                                                                                                   |     false      |
 | **`cardWrapperStyle`**  | Optional styling for the card wrapper                                                                                                                                                                                                                                                                                   |     false      |
 
-## :pushpin: &nbsp; Column array pattern
+## :pushpin: &nbsp; Columns array pattern
 
 Your column array should be something like this:
 
