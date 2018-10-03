@@ -39,18 +39,39 @@ That's it. Now, kanban should appears on your project
   <img src="https://lh4.googleusercontent.com/aqcQ1VC5whZfGh7tmP2xyWgN2QGvowRtVeDmfMUiLAZgFRaoxpBWLRtDoYJuMWut58PNZOV0an1MqSKjDVeZ=w2880-h1510-rw">
 </p>
 
-## :gear: Properties
+## :gear: &nbsp; Properties
 
 | Prop                    | Description                                                                                                                                                                                                                                                                                                             | Required       |
 | ---------------------   | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | **`onDragEnd`**         | Function that will be called when drag ends                                                                                                                                                                                                                                                                             |     false      |
 | **`onDragStart`**       | Function that will be called when drag starts                                                                                                                                                                                                                                                                           |     false      |
 | **`renderCard`**        | Function that will render your card. Receives an row as parameter                                                                                                                                                                                                                                                       |     true       |
-| **`columns`**           | Array that will be used to render your kanban. Check the patterns here                                                                                                                                                                                                                                                  |     true       |
+| **`columns`**           | Array that will be used to render your kanban. Check the patterns [here](#pushpin--column-array-pattern)                                                                                                                                                                                                                                                  |     true       |
 | **`columnStyle`**       | Optional styling for the column                                                                                                                                                                                                                                                                                         |     false      |
 | **`columnHeaderStyle`** | Optional styling for the column header                                                                                                                                                                                                                                                                                  |     false      |
 | **`columnTitleStyle`**  | Optional styling for the column title                                                                                                                                                                                                                                                                                   |     false      |
 | **`cardWrapperStyle`**  | Optional styling for the card wrapper                                                                                                                                                                                                                                                                                   |     false      |
+
+## :pushpin: &nbsp; Column array pattern
+
+Your column array should be something like this:
+
+```js
+const columns = [
+  {
+    id: 'columnId',
+    title: 'Column Title',
+    rows: [
+      {
+        id: 'rowId',
+        ...yourPropsHere, // Those props can be used on renderCard
+      },
+    ],
+  },
+];
+```
+
+**Note:** Both **columnId** and **rowId** should be a **string**
 
 
 ## 🤝 &nbsp; Contributions
