@@ -4,7 +4,7 @@
 
 ## :hammer: &nbsp; Install and Usage
 
-First, you will need to install **react-kanban** on your project
+First, you need to install **react-kanban** on your project
 
 ```sh
 yarn add react-kanban
@@ -33,8 +33,12 @@ export default class MyKanban extends React.Component {
 }
 ```
 
-That's it. Now **react-kanban** should appears on your project :v:
+That's it. Now, kanban should appears on your project
+
+<p align="center">
+  <img src="https://lh4.googleusercontent.com/aqcQ1VC5whZfGh7tmP2xyWgN2QGvowRtVeDmfMUiLAZgFRaoxpBWLRtDoYJuMWut58PNZOV0an1MqSKjDVeZ=w2880-h1510-rw">
+</p>
 
 ## 🤝 &nbsp; Contributions
 
-Every kind of contribution is welcome and you can ping me at [Twitter](https://twitter.com/lucasbesen) aswell
+Every kind of contribution is welcome. You can ping me at [Twitter](https://twitter.com/lucasbesen) aswell
