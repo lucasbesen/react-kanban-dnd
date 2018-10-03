@@ -52,7 +52,7 @@ That's it. Now, kanban should appears on your project
 | **`columnTitleStyle`**  | Optional styling for the column title                                                                                                                                                                                                                                                                                   |     false      |
 | **`cardWrapperStyle`**  | Optional styling for the card wrapper                                                                                                                                                                                                                                                                                   |     false      |
 
-## :pushpin: &nbsp; Column array pattern
+## :pushpin: Column array pattern
 
 Your column array should be something like this:
 
@@ -73,6 +73,78 @@ const columns = [
 
 **Note:** Both **columnId** and **rowId** should be a **string**
 
+## :bulb: Example
+
+```js
+import ReactKanban from 'react-kanban';
+
+export default class MyKanban extends React.Component {
+  renderCard = row => (
+    <Wrapper>
+      <TextWrapper>
+        <Label>Name:</Label>
+        <Value>{row.name}</Value>
+      </TextWrapper>
+      <TextWrapper>
+        <Label>Age:</Label>
+        <Value>{row.age}</Value>
+      </TextWrapper>
+    </Wrapper>
+  );
+
+  render() {
+    const columns = [
+      {
+        id: 'column1',
+        title: 'Column 1',
+        rows: [
+          {
+            id: 'row1',
+            name: 'User one',
+            age: 21,
+          },
+        ],
+      },
+      {
+        id: 'column2',
+        title: 'Column 2',
+        rows: [
+          {
+            id: 'row2',
+            name: 'User two',
+            age: 23,
+          },
+          {
+            id: 'row3',
+            name: 'User three',
+            age: 30,
+          },
+        ],
+      },
+      {
+        id: 'column3',
+        title: 'Column 3',
+        rows: [
+          {
+            id: 'row4',
+            name: 'User four',
+            age: 25,
+          },
+        ],
+      },
+    ];
+
+    return (
+      <ReactKanban
+        renderCard={this.renderCard}
+        columns={columns}
+      />
+    );
+  }
+}
+```
+
+**Note:** Both **columnId** and **rowId** should be a **string**
 
 ## 🤝 &nbsp; Contributions
 
