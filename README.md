@@ -52,7 +52,7 @@ That's it. Now, kanban should appears on your project
 | **`columnTitleStyle`**  | Optional styling for the column title                                                                                                                                                                                                                                                                                   |     false      |
 | **`cardWrapperStyle`**  | Optional styling for the card wrapper                                                                                                                                                                                                                                                                                   |     false      |
 
-## :pushpin: Column array pattern
+## :pushpin: &nbsp; Column array pattern
 
 Your column array should be something like this:
 
@@ -73,7 +73,7 @@ const columns = [
 
 **Note:** Both **columnId** and **rowId** should be a **string**
 
-## :bulb: Example
+## :bulb: &nbsp; Example
 
 ```js
 import ReactKanban from 'react-kanban';
@@ -143,8 +143,6 @@ export default class MyKanban extends React.Component {
   }
 }
 ```
-
-**Note:** Both **columnId** and **rowId** should be a **string**
 
 ## 🤝 &nbsp; Contributions
 
