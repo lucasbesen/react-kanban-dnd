@@ -2,10 +2,6 @@
   <img src="https://lh3.googleusercontent.com/ZCfEPmHJ61C-pPz8jXvB6l6O_nw57a83lHSIkChluRCshPjt8KJcXQgZOBeTmPJk9-UHKVa1p5IlqBF538tp=w2880-h1510">
 </p>
 
-<p align="center">
-  <img src="https://circleci.com/gh/lucasbesen/react-kanban/tree/master.svg?style=svg" alt="">
-</p>
-
 ## :hammer: Install and Usage
 
 First, you will need to install **react-kanban** on your project
