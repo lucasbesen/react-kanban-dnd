@@ -146,4 +146,4 @@ export default class MyKanban extends React.Component {
 
 ## 🤝 &nbsp; Contributions
 
-Every kind of contribution is welcome. You can ping me at [Twitter](https://twitter.com/lucasbesen) aswell
+Every kind of contribution is welcome. You can ping me at [Twitter](https://twitter.com/lucasbesen) as well
