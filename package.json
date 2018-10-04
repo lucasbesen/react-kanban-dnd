@@ -31,14 +31,18 @@
     "eslint": "^5.6.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-react": "^7.11.1",
+    "fs": "^0.0.1-security",
+    "generate-changelog": "^1.7.1",
     "husky": "^1.0.0-rc.14",
     "idx": "^2.4.0",
     "lint-staged": "^7.2.2",
+    "loadable-components": "^2.2.3",
+    "minimist": "^1.2.0",
     "prettier": "^1.14.2",
-    "styled-components": "^3.4.9",
     "react": "^16.5.2",
     "react-dom": "^16.5.1",
-    "loadable-components": "^2.2.3"
+    "simple-git": "^1.104.0",
+    "styled-components": "^3.4.9"
   },
   "dependencies": {
     "react-beautiful-dnd": "^9.0.2"
@@ -62,7 +66,11 @@
   "scripts": {
     "lint:staged": "lint-staged",
     "build": "babel src -d lib",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "release:major": "node ./changelog --major && npm version major && git push origin && git push origin --follow-tags",
+    "release:minor": "node ./changelog --minor && npm version minor && git push origin && git push origin --follow-tags",
+    "release:patch": "node ./changelog --patch && npm version patch && git push origin && git push origin --follow-tags",
+    "release:version": "node ./changelog --version $VERSION && git push origin && git push origin --follow-tags"
   },
   "husky": {
     "hooks": {
