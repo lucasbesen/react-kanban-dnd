@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://lh4.googleusercontent.com/PJYIdIDdaYwmuZPnl2-ZHUu6bF4BT8OzjJadD5tW_TsMXfv0Jsh0CCeS2jVR5WDLPn9zOF5KdKuQNhNRATvN=w2880-h1510">
+  <img src="https://cdn-std.dprcdn.net/files/acc_687327/AmwiMZ">
 </p>
 
 ## :hammer: &nbsp; Install and Usage
@@ -36,7 +36,7 @@ export default class MyKanban extends React.Component {
 That's it. Now, kanban should appears on your project
 
 <p align="center">
-  <img src="https://lh4.googleusercontent.com/aqcQ1VC5whZfGh7tmP2xyWgN2QGvowRtVeDmfMUiLAZgFRaoxpBWLRtDoYJuMWut58PNZOV0an1MqSKjDVeZ=w2880-h1510-rw">
+  <img src="https://cdn-std.dprcdn.net/files/acc_687326/2Nx9nO">
 </p>
 
 ## :gear: &nbsp; Properties
