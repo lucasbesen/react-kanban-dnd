@@ -1,6 +1,6 @@
 {
   "name": "react-kanban",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Open source kanban board built with React",
   "main": "lib/index.js",
   "author": {
