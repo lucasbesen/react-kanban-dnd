@@ -10,7 +10,7 @@ First, you need to install **react-kanban** on your project
 yarn add react-kanban
 ```
 
-Then import **react-kanban** inside your project:
+Then import it inside your project:
 
 ```js
 import ReactKanban from 'react-kanban';
