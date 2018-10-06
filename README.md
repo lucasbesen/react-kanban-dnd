@@ -2,6 +2,11 @@
   <img src="https://cdn-std.dprcdn.net/files/acc_687327/AmwiMZ">
 </p>
 
+<p align="center">
+  <img src="https://cdn-std.dprcdn.net/files/acc_687326/w7A4Kw">
+  <img src="https://cdn-std.dprcdn.net/files/acc_687326/ciW1MR">
+</p>
+
 ## :hammer: &nbsp; Install and Usage
 
 First, you need to install **react-kanban-dnd** on your project
