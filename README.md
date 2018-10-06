@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-  <img src="https://cdn-std.dprcdn.net/files/acc_687326/w7A4Kw">
-  <img src="https://cdn-std.dprcdn.net/files/acc_687326/ciW1MR">
+  <img src="https://badgen.net/npm/v/react-kanban-dnd">
+  <img src="https://badgen.net/badge/license/MIT/blue">
 </p>
 
 ## :hammer: &nbsp; Install and Usage
