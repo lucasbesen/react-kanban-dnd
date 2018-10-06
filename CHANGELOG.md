@@ -1,3 +1,10 @@
+#### 0.1.3-3 (2018-10-06)
+
+##### Code Style Changes
+
+*  fix badge link ([af44f557](https://github.com/lucasbesen/react-kanban-dnd/commit/af44f557e45c1590da218f091f5c53066beacfd0))
+*  add badges ([fa77b08c](https://github.com/lucasbesen/react-kanban-dnd/commit/fa77b08ce962c17cb1dfdb43e553edd9751843b1))
+
 #### 0.1.2-2 (2018-10-06)
 
 ##### Bug Fixes
