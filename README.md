@@ -2,6 +2,11 @@
   <img src="https://cdn-std.dprcdn.net/files/acc_687327/AmwiMZ">
 </p>
 
+<p align="center">
+  <img src="https://badgen.net/npm/v/react-kanban-dnd">
+  <img src="https://badgen.net/badge/license/MIT/blue">
+</p>
+
 ## :hammer: &nbsp; Install and Usage
 
 First, you need to install **react-kanban-dnd** on your project
