@@ -1,5 +1,5 @@
 {
-  "name": "react-kanban",
+  "name": "react-kanban-dnd",
   "version": "0.1.1",
   "description": "Open source kanban board built with React",
   "main": "lib/index.js",
@@ -8,13 +8,13 @@
     "email": "lucassilvabesen@gmail.com",
     "url": "https://github.com/lucasbesen"
   },
-  "homepage": "https://github.com/lucasbesen/react-kanban",
+  "homepage": "https://github.com/lucasbesen/react-kanban-dnd",
   "bugs": {
-    "url": "https://github.com/lucasbesen/react-kanban/issues"
+    "url": "https://github.com/lucasbesen/react-kanban-dnd/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lucasbesen/react-kanban.git"
+    "url": "git+https://github.com/lucasbesen/react-kanban-dnd.git"
   },
   "license": "MIT",
   "devDependencies": {

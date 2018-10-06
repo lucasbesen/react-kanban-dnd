@@ -4,16 +4,16 @@
 
 ## :hammer: &nbsp; Install and Usage
 
-First, you need to install **react-kanban** on your project
+First, you need to install **react-kanban-dnd** on your project
 
 ```sh
-yarn add react-kanban
+yarn add react-kanban-dnd
 ```
 
 Then import it inside your project:
 
 ```js
-import ReactKanban from 'react-kanban';
+import ReactKanban from 'react-kanban-dnd';
 
 export default class MyKanban extends React.Component {
   render() {
@@ -76,7 +76,7 @@ const columns = [
 ## :bulb: &nbsp; Example
 
 ```js
-import ReactKanban from 'react-kanban';
+import ReactKanban from 'react-kanban-dnd';
 
 export default class MyKanban extends React.Component {
   renderCard = row => (
