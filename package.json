@@ -1,6 +1,6 @@
 {
   "name": "react-kanban-dnd",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Open source kanban board built with React",
   "main": "lib/index.js",
   "author": {
