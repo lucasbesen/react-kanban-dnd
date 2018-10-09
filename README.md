@@ -9,7 +9,7 @@
 
 ## :hammer: &nbsp; Install and Usage
 
-First, you need to install **react-kanban-dnd** on your project
+First, you need to install **react-kanban-dnd** on your project:
 
 ```sh
 yarn add react-kanban-dnd
@@ -38,7 +38,7 @@ export default class MyKanban extends React.Component {
 }
 ```
 
-That's it. Now, kanban should appears on your project
+That's it. Now, kanban should appear on your project.
 
 <p align="center">
   <img src="https://cdn-std.dprcdn.net/files/acc_687326/2Nx9nO">
@@ -50,7 +50,7 @@ That's it. Now, kanban should appears on your project
 | ---------------------   | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | **`onDragEnd`**         | Function that will be called when drag ends                                                                                                                                                                                                                                                                             |     false      |
 | **`onDragStart`**       | Function that will be called when drag starts                                                                                                                                                                                                                                                                           |     false      |
-| **`renderCard`**        | Function that will render your card. Receives an row as parameter                                                                                                                                                                                                                                                       |     true       |
+| **`renderCard`**        | Function that will render your card. Receives a row as a parameter                                                                                                                                                                                                                                                       |     true       |
 | **`columns`**           | Array that will be used to render your kanban. Check the patterns [here](#pushpin--column-array-pattern)                                                                                                                                                                                                                                                  |     true       |
 | **`columnStyle`**       | Optional styling for the column                                                                                                                                                                                                                                                                                         |     false      |
 | **`columnHeaderStyle`** | Optional styling for the column header                                                                                                                                                                                                                                                                                  |     false      |
@@ -76,7 +76,7 @@ const columns = [
 ];
 ```
 
-**Note:** Both **columnId** and **rowId** should be a **string**
+**Note:** Both **columnId** and **rowId** should be a **string**.
 
 ## :bulb: &nbsp; Example
 
@@ -151,4 +151,4 @@ export default class MyKanban extends React.Component {
 
 ## 🤝 &nbsp; Contributions
 
-Every kind of contribution is welcome. You can ping me at [Twitter](https://twitter.com/lucasbesen) as well
+Every kind of contribution is welcome. You can ping me at [Twitter](https://twitter.com/lucasbesen) as well.
