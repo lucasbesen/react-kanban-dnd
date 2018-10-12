@@ -1,3 +1,9 @@
+#### 0.1.5-5 (2018-10-12)
+
+##### Bug Fixes
+
+*  add idx in dependencie ([60424eb4](https://github.com/lucasbesen/react-kanban-dnd/commit/60424eb44d928b7fad1afa8a605bda81afee6d20))
+
 #### 0.1.4-4 (2018-10-09)
 
 #### 0.1.3-3 (2018-10-06)
