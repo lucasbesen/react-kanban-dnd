@@ -1,10 +1,26 @@
 import * as React from 'react';
-import { Draggable } from 'react-beautiful-dnd';
-import styled from 'styled-components';
+import { Draggable, DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd';
+import styledComponents from 'styled-components';
 
 import List from './List';
+import { ColumnInterface } from './ReactKanban';
 
-const Title = styled.h4`
+export interface ColumnProps {
+  index: number;
+  column: ColumnInterface;
+  renderCard: Function;
+  columnWrapperStyle: Object;
+  columnStyle: Object;
+  columnTitleStyle: Object;
+  columnHeaderStyle: Object;
+  cardWrapperStyle: Object;
+}
+
+interface DraggingProps {
+  isDragging: boolean;
+}
+
+const Title = styledComponents<DraggingProps, any>('h4')`
   padding: 10px;
   transition: background-color ease 0.2s;
   flex-grow: 1;
@@ -19,7 +35,7 @@ const Title = styled.h4`
   font-family: 'Open Sans', sans-serif;
   color: #515c6a;
 `;
-const Container = styled.div`
+const Container = styledComponents.div`
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -28,7 +44,7 @@ const Container = styled.div`
   width: 270px;
 `;
 
-const Header = styled.div`
+const Header = styledComponents<DraggingProps, any>('div')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,9 +60,9 @@ const Header = styled.div`
   height: 50px;
 `;
 
-const Wrapper = styled.div``;
+const Wrapper = styledComponents<DraggableProvided, any>('div')``;
 
-export default class Column extends React.Component {
+export default class Column extends React.Component<ColumnProps, {}> {
   render() {
     const {
       index,
@@ -61,7 +77,7 @@ export default class Column extends React.Component {
 
     return (
       <Draggable draggableId={column.id} index={index} isDragDisabled={true}>
-        {(provided, snapshot) => (
+        {(provided: DraggableProvided, snapshot: DraggableStateSnapshot) => (
           <Wrapper innerRef={provided.innerRef} {...provided.draggableProps}>
             <Container style={columnWrapperStyle}>
               <Header style={columnHeaderStyle} isDragging={snapshot.isDragging}>
