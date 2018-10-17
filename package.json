@@ -2,7 +2,7 @@
   "name": "react-kanban-dnd",
   "version": "0.1.5",
   "description": "Open source kanban board built with React",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "author": {
     "name": "Lucas Besen",
     "email": "lucassilvabesen@gmail.com",
@@ -67,8 +67,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "prettier --write --single-quote true --trailing-comma all --print-width 100",
-      "eslint --fix",
+      "./node_modules/.bin/tslint -c tslint.json 'src/**/*.tsx'",
       "git add"
     ]
   },
@@ -83,7 +82,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.tsx'",
+      "pre-commit": "yarn lint:staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
