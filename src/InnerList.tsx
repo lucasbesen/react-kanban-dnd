@@ -3,10 +3,10 @@ import { Draggable, DraggableProvided, DraggableStateSnapshot } from 'react-beau
 import idx from 'idx';
 
 import Card from './Card';
-import { ColumnInteface } from './ReactKanban';
+import { ColumnInterface } from './ReactKanban';
 
 export interface InnerListProps {
-  column: ColumnInteface;
+  column: ColumnInterface;
   renderCard: Function;
   cardWrapperStyle: Object;
 }

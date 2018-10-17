@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import {
   DragDropContext,
   Droppable,
@@ -23,11 +23,11 @@ export interface RowInterface {
 export interface ColumnInterface {
   id: string;
   title: string;
-  rows: Array<RowInterface>;
+  rows: RowInterface[];
 }
 
 export interface ReactKanbanProps extends DragDropContextProps {
-  columns: Array<ColumnInterface>;
+  columns: ColumnInterface[];
   renderCard: Function;
   columnWrapperStyle: Object;
   columnHeaderStyle: Object;
@@ -52,20 +52,20 @@ export default class ReactKanban extends React.Component<ReactKanbanProps, {}> {
     if (
       result.source.droppableId === destination.droppableId &&
       result.source.index === destination.index
-    ) return;
+    )
+      return;
 
     // TODO: Make this immutable
     let removedRow: RowInterface = null;
 
     columns.map((column: ColumnInterface) => {
-      const rows = column.rows.filter((row) => {
+      column.rows = column.rows.filter((row) => {
         if (row.id === result.draggableId) {
           removedRow = row;
           return false;
         }
         return true;
       });
-      column.rows = rows;
     });
 
     columns.map((column: ColumnInterface) => {
