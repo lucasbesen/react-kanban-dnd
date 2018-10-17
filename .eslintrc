@@ -48,7 +48,9 @@
   },
   "settings": {
     "import/resolver": {
-      "node": true
+      "node": {
+        "paths": ["src"]
+      }
     }
   }
 }

@@ -1,18 +1,25 @@
 import * as React from 'react';
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable, DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd';
 import idx from 'idx';
 
 import Card from './Card';
+import { ColumnInteface } from './ReactKanban';
 
-export default class InnerList extends React.Component {
+export interface InnerListProps {
+  column: ColumnInteface;
+  renderCard: Function;
+  cardWrapperStyle: Object;
+}
+
+export default class InnerList extends React.Component<InnerListProps, {}> {
   render() {
     const { column, cardWrapperStyle } = this.props;
     return idx(column, _ => _.rows[0])
-      ? column.rows.map((row, index) => (
+      ? column.rows.map((row, index: number) => (
           <Draggable key={row.id} draggableId={row.id} index={index}>
-            {(dragProvided, dragSnapshot) => (
+            {(dragProvided: DraggableProvided, dragSnapshot: DraggableStateSnapshot) => (
               <Card
-                key={row.id}
+                key={index}
                 row={row}
                 isDragging={dragSnapshot.isDragging}
                 provided={dragProvided}
