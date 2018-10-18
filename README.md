@@ -9,6 +9,8 @@
 
 ## :hammer: &nbsp; Install and Usage
 
+**Live demo**: click [here](https://codesandbox.io/s/3262ywolp1)
+
 First, you need to install **react-kanban-dnd** on your project:
 
 ```sh
