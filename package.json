@@ -28,6 +28,7 @@
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
     "awesome-typescript-loader": "^5.2.1",
+    "docz": "^0.12.5",
     "fs": "^0.0.1-security",
     "generate-changelog": "^1.7.1",
     "husky": "^1.0.0-rc.14",
@@ -49,6 +50,7 @@
     "@types/react-beautiful-dnd": "^7.1.2",
     "@types/react-dom": "^16.0.9",
     "@types/styled-components": "^4.0.1",
+    "buble": "0.19.4",
     "idx": "^2.4.0",
     "react-beautiful-dnd": "^9.0.2"
   },

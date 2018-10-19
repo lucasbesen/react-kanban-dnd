@@ -1,0 +1,25 @@
+---
+name: ReactKanban
+---
+
+import { Playground, PropsTable } from 'docz'
+import ReactKanban from '../src/ReactKanban'
+import { columns, renderCard } from './constants'
+import { styles } from './styles'
+
+# ReactKanban
+
+<PropsTable of={ReactKanban} />
+
+## Basic usage
+
+<Playground>
+    <ReactKanban
+      columns={columns}
+      renderCard={renderCard}
+      onDragEnd={() => {}}
+      cardWrapperStyle={styles.cardWrapper}
+      columnStyle={styles.columnStyle}
+      columnHeaderStyle={styles.columnHeaderStyle}
+    />
+</Playground>
