@@ -153,4 +153,21 @@ export default class MyKanban extends React.Component {
 
 ## 🤝 &nbsp; Contributions
 
+Start cloning the repository:
+```sh
+git@github.com:lucasbesen/react-kanban-dnd.git
+```
+
+Install dependencies:
+```sh
+yarn
+```
+
+Then run docz;
+```sh
+yarn docz:dev
+```
+
+Finally go to http://localhost:3000/docs-react-kanban
+
 Every kind of contribution is welcome. You can ping me at [Twitter](https://twitter.com/lucasbesen) as well.
