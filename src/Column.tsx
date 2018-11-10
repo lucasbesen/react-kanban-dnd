@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { Draggable, DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd';
+import {
+  Draggable,
+  DraggableProvided,
+  DraggableStateSnapshot,
+} from 'react-beautiful-dnd';
 import styledComponents from 'styled-components';
 
 import List from './List';
@@ -77,13 +81,18 @@ export default class Column extends React.Component<ColumnProps, {}> {
 
     return (
       <Draggable draggableId={column.id} index={index} isDragDisabled={true}>
-        {(provided: DraggableProvided, snapshot: DraggableStateSnapshot) => (
-          <Wrapper innerRef={provided.innerRef} {...provided.draggableProps}>
+        {(provided: DraggableProvided) => (
+          <Wrapper
+            innerRef={provided.innerRef}
+            {...provided.draggableProps}
+          >
             <Container style={columnWrapperStyle}>
-              <Header style={columnHeaderStyle} isDragging={snapshot.isDragging}>
+              <Header
+                {...provided.dragHandleProps}
+                style={columnHeaderStyle}
+              >
                 <Title
                   style={columnTitleStyle}
-                  isDragging={snapshot.isDragging}
                   {...provided.dragHandleProps}
                 >
                   {column.title}
