@@ -27,6 +27,7 @@
     "@babel/preset-react": "^7.0.0",
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
+    "all-contributors-cli": "^5.4.1",
     "awesome-typescript-loader": "^5.2.1",
     "docz": "^0.12.5",
     "fs": "^0.0.1-security",
@@ -77,7 +78,9 @@
     "release:minor": "node ./changelog --minor && npm version minor && git push origin && git push origin --follow-tags",
     "release:patch": "node ./changelog --patch && npm version patch && git push origin && git push origin --follow-tags",
     "release:version": "node ./changelog --version $VERSION && git push origin && git push origin --follow-tags",
-    "docz:dev": "docz dev"
+    "docz:dev": "docz dev",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
   },
   "husky": {
     "hooks": {

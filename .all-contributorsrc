@@ -1,0 +1,73 @@
+{
+  "projectName": "react-kanban-dnd",
+  "projectOwner": "lucasbesen",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "badgeTemplate": "",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 60,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "lucasbesen",
+      "name": "Lucas Besen",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13984388?v=4",
+      "profile": "https://twitter.com/lucasbesen",
+      "contributions": [
+        "bug",
+        "code",
+        "doc",
+        "example",
+        "review"
+      ]
+    },
+    {
+      "login": "caioflores",
+      "name": "Caio Flores",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4183877?v=4",
+      "profile": "https://github.com/caioflores",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "isacjunior",
+      "name": "Isac",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12630335?v=4",
+      "profile": "https://medium.com/@isacjunior",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Nfinger",
+      "name": "Nfinger",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/17767789?v=4",
+      "profile": "https://github.com/Nfinger",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "paustint",
+      "name": "Austin Turner",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/5461649?v=4",
+      "profile": "https://github.com/paustint",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "kohchihao",
+      "name": "Marcus Koh",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8737187?v=4",
+      "profile": "http://www.kohchihao.com",
+      "contributions": [
+        "bug"
+      ]
+    }
+  ]
+}
