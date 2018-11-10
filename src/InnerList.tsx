@@ -23,6 +23,7 @@ export default class InnerList extends React.Component<InnerListProps, {}> {
                 row={row}
                 isDragging={dragSnapshot.isDragging}
                 provided={dragProvided}
+                dragSnapshot={dragSnapshot}
                 renderCard={this.props.renderCard}
                 cardWrapperStyle={cardWrapperStyle}
               />

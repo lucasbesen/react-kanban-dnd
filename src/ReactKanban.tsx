@@ -6,6 +6,7 @@ import {
   DragDropContextProps,
   DragUpdate,
   DropResult,
+  DraggableStateSnapshot,
 } from 'react-beautiful-dnd';
 import styledComponents from 'styled-components';
 
@@ -41,39 +42,47 @@ export default class ReactKanban extends React.Component<ReactKanbanProps, {}> {
     columns: this.props.columns || [],
   };
 
+  reorder = (rows: RowInterface[], startIndex: number, endIndex: number) => {
+    const result = [...rows];
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+  }
+
+  getColumnIndexById = (columns: ColumnInterface[], id: string) => {
+    return columns.map((column) => { return column.id; }).indexOf(id);
+  }
+
   handleDrag = (result: DragUpdate) => {
     const { columns } = this.state;
     const { onDragEnd } = this.props;
-    const destination = result.destination;
+    const { source, destination } = result;
 
     // Dropped nowhere
-    if (!result.destination) return;
+    if (!destination) return;
     // Didn't move anywhere - can bail early
     if (
-      result.source.droppableId === destination.droppableId &&
-      result.source.index === destination.index
+      source.droppableId === destination.droppableId &&
+      source.index === destination.index
     )
       return;
 
-    // TODO: Make this immutable
-    let removedRow: RowInterface = null;
+    const newColumns = [...columns];
 
-    columns.map((column: ColumnInterface) => {
-      column.rows = column.rows.filter((row) => {
-        if (row.id === result.draggableId) {
-          removedRow = row;
-          return false;
-        }
-        return true;
-      });
-    });
+    const sourceIndex = this.getColumnIndexById(columns, source.droppableId);
+    const destinationIndex = this.getColumnIndexById(columns, destination.droppableId);
 
-    columns.map((column: ColumnInterface) => {
-      if (column.id === destination.droppableId && removedRow) {
-        column.rows.push(removedRow);
-      }
-    });
-    this.setState({ columns });
+    const newSourceRows: RowInterface[] = columns[sourceIndex].rows;
+    const newDestinationRows: RowInterface[] = columns[destinationIndex].rows;
+
+    const [removed] = newSourceRows.splice(source.index, 1);
+    newDestinationRows.splice(destination.index, 0, removed);
+
+    newColumns[sourceIndex].rows = newSourceRows;
+    newColumns[destinationIndex].rows = newDestinationRows;
+
+    this.setState({ newColumns });
 
     const dropReason: DropResult = {
       reason: 'DROP',

@@ -24,11 +24,12 @@ const Wrapper = styledComponents<DroppableProps, any>('div')`
   padding-bottom: 0;
   transition: background-color 0.1s ease, opacity 0.1s ease;
   user-select: none;
+  min-height: 250px;
+  margin-bottom: 10px;
 `;
 
 const DropZone = styledComponents<DroppableProvided, any>('div')`
-  min-height: 250px;
-  margin-bottom: 10px;
+
 `;
 
 const List = ({
@@ -39,25 +40,31 @@ const List = ({
   columnStyle,
   cardWrapperStyle,
 }: {
-  isDropDisabled?: boolean;
-  listId: string;
-  column: ColumnInterface;
-  renderCard: Function;
-  columnStyle: Object;
-  cardWrapperStyle: Object;
+  isDropDisabled?: boolean
+  listId: string
+  column: ColumnInterface
+  renderCard: Function
+  columnStyle: Object
+  cardWrapperStyle: Object,
 }) => (
   <Droppable droppableId={listId || 'LIST'} isDropDisabled={isDropDisabled}>
-    {(dropProvided: DroppableProvided, dropSnapshot: DroppableStateSnapshot) => (
+    {(
+      dropProvided: DroppableProvided,
+      dropSnapshot: DroppableStateSnapshot,
+    ) => (
       <Wrapper
         style={columnStyle}
+        innerRef={dropProvided.innerRef}
         isDraggingOver={dropSnapshot.isDraggingOver}
         isDropDisabled={isDropDisabled}
         {...dropProvided.droppableProps}
       >
-        <DropZone innerRef={dropProvided.innerRef}>
-          <InnerList column={column} renderCard={renderCard} cardWrapperStyle={cardWrapperStyle} />
-          {dropProvided.placeholder}
-        </DropZone>
+        <InnerList
+          column={column}
+          renderCard={renderCard}
+          cardWrapperStyle={cardWrapperStyle}
+        />
+        {dropProvided.placeholder}
       </Wrapper>
     )}
   </Droppable>

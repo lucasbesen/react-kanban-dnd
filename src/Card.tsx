@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styledComponents from 'styled-components';
 
-import { DraggableProvided } from 'react-beautiful-dnd';
+import { DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd';
 
 import { RowInterface } from './ReactKanban';
 
@@ -24,12 +24,14 @@ const Content = styledComponents<ContentProps, any>('div')`
 const Card = ({
   isDragging,
   provided,
+  dragSnapshot,
   renderCard,
   row,
   cardWrapperStyle,
 }: {
   isDragging: boolean;
   provided: DraggableProvided;
+  dragSnapshot: DraggableStateSnapshot
   renderCard: Function;
   row: RowInterface;
   cardWrapperStyle: Object;
@@ -38,6 +40,7 @@ const Card = ({
     innerRef={provided.innerRef}
     {...provided.draggableProps}
     {...provided.dragHandleProps}
+    isDragging={dragSnapshot.isDragging}
   >
     <Content style={cardWrapperStyle} isDragging={isDragging}>
       {renderCard(row)}
