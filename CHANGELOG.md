@@ -1,3 +1,28 @@
+#### 0.2.1-7 (2019-01-02)
+
+##### Chores
+
+*  add contributors ([b62a0200](https://github.com/lucasbesen/react-kanban-dnd/commit/b62a02009efafbfd99161d3445dd5522838be7ad))
+
+##### Documentation Changes
+
+*  improved README with contribution info ([38934bbd](https://github.com/lucasbesen/react-kanban-dnd/commit/38934bbd15b7447323a5883f8e73439f1cb285af))
+
+##### New Features
+
+*  add script to run docz ([4c92b80e](https://github.com/lucasbesen/react-kanban-dnd/commit/4c92b80ec4e6ec5fa3145059512e4381633c80b6))
+*  add docz ([e7597f7e](https://github.com/lucasbesen/react-kanban-dnd/commit/e7597f7e73849ce26c6a5fffe96646f9b007062f))
+*  add codesandbox live demo ([ec7bb6e2](https://github.com/lucasbesen/react-kanban-dnd/commit/ec7bb6e2648acbd73192f0e3b6df9953365d0302))
+
+##### Bug Fixes
+
+*  solve strange behavior when repositioning cards ([ccde5803](https://github.com/lucasbesen/react-kanban-dnd/commit/ccde5803f9c1da1c127d8083132ea49a49272e40))
+*  add .docz on gitignore ([22664341](https://github.com/lucasbesen/react-kanban-dnd/commit/2266434117c3976c6e66bd3ce9d91db5b0c0c4cb))
+
+##### Refactors
+
+*  simplify reorder logic ([d71c06e3](https://github.com/lucasbesen/react-kanban-dnd/commit/d71c06e3c773157252400ce1d60bbb6a00f3a221))
+
 ### 0.2.0-6 (2018-10-17)
 
 ##### Bug Fixes
