@@ -6,7 +6,6 @@ import {
   DragDropContextProps,
   DragUpdate,
   DropResult,
-  DraggableStateSnapshot,
 } from 'react-beautiful-dnd';
 import styledComponents from 'styled-components';
 
@@ -36,10 +35,19 @@ export interface ReactKanbanProps extends DragDropContextProps {
   columnTitleStyle: Object;
   cardWrapperStyle: Object;
 }
+// a little function to help us with reordering the result
+const reorder = (list: any[], startIndex: number, endIndex: number): any[] => {
+  const result = list;
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  return result;
+};
 
 export default class ReactKanban extends React.Component<ReactKanbanProps, {}> {
   state = {
     columns: this.props.columns || [],
+    ordered: Object.keys(this.props.columns),
   };
 
   reorder = (rows: RowInterface[], startIndex: number, endIndex: number) => {
@@ -58,37 +66,41 @@ export default class ReactKanban extends React.Component<ReactKanbanProps, {}> {
     const { columns } = this.state;
     const { onDragEnd } = this.props;
     const { source, destination } = result;
-
     // Dropped nowhere
     if (!destination) return;
     // Didn't move anywhere - can bail early
-    if (
-      source.droppableId === destination.droppableId &&
-      source.index === destination.index
-    )
-      return;
+    if (result.type === 'COLUMN') {
+      const ordered: string[] = reorder(
+        this.state.ordered,
+        source.index,
+        destination.index,
+      );
 
-    const newColumns = [...columns];
-
-    const sourceIndex = this.getColumnIndexById(columns, source.droppableId);
-    const destinationIndex = this.getColumnIndexById(columns, destination.droppableId);
-
-    const newSourceRows: RowInterface[] = columns[sourceIndex].rows;
-    const newDestinationRows: RowInterface[] = columns[destinationIndex].rows;
-
-    const [removed] = newSourceRows.splice(source.index, 1);
-    newDestinationRows.splice(destination.index, 0, removed);
-
-    newColumns[sourceIndex].rows = newSourceRows;
-    newColumns[destinationIndex].rows = newDestinationRows;
-
-    this.setState({ newColumns });
-
+      this.setState({
+        ordered,
+      });
+    }else {
+      if (
+        source.droppableId === destination.droppableId &&
+        source.index === destination.index
+      ) {
+        return;
+      }
+      const newColumns = [...columns];
+      const sourceIndex = this.getColumnIndexById(columns, source.droppableId);
+      const destinationIndex = this.getColumnIndexById(columns, destination.droppableId);
+      const newSourceRows: RowInterface[] = columns[sourceIndex].rows;
+      const newDestinationRows: RowInterface[] = columns[destinationIndex].rows;
+      const [removed] = newSourceRows.splice(source.index, 1);
+      newDestinationRows.splice(destination.index, 0, removed);
+      newColumns[sourceIndex].rows = newSourceRows;
+      newColumns[destinationIndex].rows = newDestinationRows;
+      this.setState({ newColumns });
+    }
     const dropReason: DropResult = {
       reason: 'DROP',
       ...result,
     };
-
     return onDragEnd(dropReason, null);
   }
 
@@ -102,17 +114,17 @@ export default class ReactKanban extends React.Component<ReactKanbanProps, {}> {
       columnTitleStyle,
       cardWrapperStyle,
     } = this.props;
-    const { columns } = this.state;
+    const { columns, ordered } = this.state;
     return (
       <DragDropContext onDragStart={onDragStart} onDragEnd={this.handleDrag}>
-        <Droppable droppableId="board" isDropDisabled={true}>
+        <Droppable droppableId="board" isDropDisabled={false} type="COLUMN">
           {(provided: DroppableProvided) => (
             <Container innerRef={provided.innerRef} {...provided.droppableProps}>
-              {columns.map((column, index) => (
+              {ordered.map((key : any, index) => (
                 <Column
                   key={index}
                   index={index}
-                  column={column}
+                  column={columns[key]}
                   renderCard={renderCard}
                   columnHeaderStyle={columnHeaderStyle}
                   columnTitleStyle={columnTitleStyle}

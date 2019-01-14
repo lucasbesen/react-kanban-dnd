@@ -47,7 +47,7 @@ const List = ({
   columnStyle: Object
   cardWrapperStyle: Object,
 }) => (
-  <Droppable droppableId={listId || 'LIST'} isDropDisabled={isDropDisabled}>
+  <Droppable droppableId={listId || 'LIST'} isDropDisabled={isDropDisabled} type="ROW">
     {(
       dropProvided: DroppableProvided,
       dropSnapshot: DroppableStateSnapshot,

@@ -80,7 +80,7 @@ export default class Column extends React.Component<ColumnProps, {}> {
     } = this.props;
 
     return (
-      <Draggable draggableId={column.id} index={index} isDragDisabled={true}>
+      <Draggable draggableId={column.id} index={index} isDragDisabled={false}>
         {(provided: DraggableProvided) => (
           <Wrapper
             innerRef={provided.innerRef}
