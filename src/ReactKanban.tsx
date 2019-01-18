@@ -79,7 +79,7 @@ export default class ReactKanban extends React.Component<ReactKanbanProps, {}> {
       this.setState({
         ordered,
       });
-    }else {
+    } else {
       if (
         source.droppableId === destination.droppableId &&
         source.index === destination.index
@@ -117,10 +117,10 @@ export default class ReactKanban extends React.Component<ReactKanbanProps, {}> {
     const { columns, ordered } = this.state;
     return (
       <DragDropContext onDragStart={onDragStart} onDragEnd={this.handleDrag}>
-        <Droppable droppableId="board" isDropDisabled={false} type="COLUMN">
+        <Droppable droppableId="board" isDropDisabled={false} type="COLUMN" direction="horizontal" >
           {(provided: DroppableProvided) => (
             <Container innerRef={provided.innerRef} {...provided.droppableProps}>
-              {ordered.map((key : any, index) => (
+              {ordered.map((key: any, index) => (
                 <Column
                   key={index}
                   index={index}
