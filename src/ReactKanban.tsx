@@ -50,14 +50,6 @@ export default class ReactKanban extends React.Component<ReactKanbanProps, {}> {
     ordered: Object.keys(this.props.columns),
   };
 
-  reorder = (rows: RowInterface[], startIndex: number, endIndex: number) => {
-    const result = [...rows];
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-
-    return result;
-  }
-
   getColumnIndexById = (columns: ColumnInterface[], id: string) => {
     return columns.map((column) => { return column.id; }).indexOf(id);
   }
@@ -80,10 +72,9 @@ export default class ReactKanban extends React.Component<ReactKanbanProps, {}> {
         ordered,
       });
     } else {
-      if (
-        source.droppableId === destination.droppableId &&
-        source.index === destination.index
-      ) {
+      /* tslint:disable-next-line */
+      const stillOnSamePlace = source.droppableId === destination.droppableId && source.index === destination.index;
+      if (stillOnSamePlace) {
         return;
       }
       const newColumns = [...columns];

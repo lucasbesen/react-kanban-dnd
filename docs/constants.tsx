@@ -42,6 +42,22 @@ export const columns = [
       },
     ],
   },
+  {
+    id: 'column3',
+    title: 'Column 3',
+    rows: [
+      {
+        id: 'children5',
+        name: 'Joelton',
+        age: '25',
+      },
+      {
+        id: 'children6',
+        name: 'Steve',
+        age: '26',
+      },
+    ],
+  },
 ];
 
 export const renderCard = row => (
