@@ -1,3 +1,17 @@
+### 0.3.0-8 (2019-01-24)
+
+##### New Features
+
+*  allow drag and drop columns ([cd25b051](https://github.com/lucasbesen/react-kanban-dnd/commit/cd25b051626284b0f12491a05cf3a982328f35cb))
+
+##### Bug Fixes
+
+*  adds package-lock.json to .gitignore ([9112903a](https://github.com/lucasbesen/react-kanban-dnd/commit/9112903aa62726c6ad5579f2707f7c40801c35c5))
+
+##### Code Style Changes
+
+* **readme:**  add @GLuchtenberg as contributor ([46e366d6](https://github.com/lucasbesen/react-kanban-dnd/commit/46e366d6cfa0e45469ae681b8c0495305295977d))
+
 #### 0.2.1-7 (2019-01-02)
 
 ##### Chores
