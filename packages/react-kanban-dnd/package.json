@@ -1,0 +1,91 @@
+{
+  "name": "react-kanban-dnd",
+  "version": "0.3.0",
+  "description": "Open source kanban board built with React",
+  "main": "dist/index.js",
+  "author": {
+    "name": "Lucas Besen",
+    "email": "lucassilvabesen@gmail.com",
+    "url": "https://github.com/lucasbesen"
+  },
+  "homepage": "https://github.com/lucasbesen/react-kanban-dnd",
+  "bugs": {
+    "url": "https://github.com/lucasbesen/react-kanban-dnd/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasbesen/react-kanban-dnd.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@commitlint/cli": "^7.1.2",
+    "@commitlint/config-conventional": "^7.1.2",
+    "all-contributors-cli": "^5.4.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "docz": "^0.12.5",
+    "fs": "^0.0.1-security",
+    "generate-changelog": "^1.7.1",
+    "husky": "^1.0.0-rc.14",
+    "lint-staged": "^7.2.2",
+    "loadable-components": "^2.2.3",
+    "minimist": "^1.2.0",
+    "prettier": "^1.14.2",
+    "react": "^16.5.2",
+    "react-dom": "16.5.1",
+    "simple-git": "^1.104.0",
+    "source-map-loader": "^0.2.4",
+    "styled-components": "3.4.9",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "typescript": "^3.1.3"
+  },
+  "dependencies": {
+    "@types/react": "^16.4.18",
+    "@types/react-beautiful-dnd": "^7.1.2",
+    "@types/react-dom": "^16.0.9",
+    "@types/styled-components": "^4.0.1",
+    "buble": "0.19.4",
+    "idx": "^2.4.0",
+    "react-beautiful-dnd": "^9.0.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "styled-components": "*"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "./node_modules/.bin/tslint -c tslint.json 'src/**/*.tsx'",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "lint:staged": "lint-staged",
+    "build": "rm -rf ./lib && tsc",
+    "prepublish": "yarn build",
+    "release:major": "node ./changelog --major && npm version major && git push origin && git push origin --follow-tags",
+    "release:minor": "node ./changelog --minor && npm version minor && git push origin && git push origin --follow-tags",
+    "release:patch": "node ./changelog --patch && npm version patch && git push origin && git push origin --follow-tags",
+    "release:version": "node ./changelog --version $VERSION && git push origin && git push origin --follow-tags",
+    "docz:dev": "docz dev",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint:staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
